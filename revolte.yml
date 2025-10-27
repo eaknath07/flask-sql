@@ -2,9 +2,17 @@ revolte:
   version: '1.0'
   project: Dracarys
   appName: check-app
+  config:
+    codeQuality:
+      codeStyle:
+        rules:
+          abstractClassInstantiated: 'on'
   env:
     staging:
       branch: main
+      codeReview: true
+      codeQuality: true
+      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -21,6 +29,9 @@ revolte:
             storage: 30
     qa:
       branch: main
+      codeReview: true
+      codeQuality: true
+      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -37,6 +48,9 @@ revolte:
             storage: 30
     production:
       branch: main
+      codeReview: true
+      codeQuality: true
+      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
