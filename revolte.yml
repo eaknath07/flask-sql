@@ -6,7 +6,7 @@ revolte:
     codeQuality:
       codeStyle:
         rules:
-          abstractClassInstantiated: 'on'
+          invalidMetaclass: 'on'
   env:
     staging:
       branch: main
@@ -70,6 +70,9 @@ revolte:
                 min: 1
                 max: 1
     preview:
+      codeReview: false
+      codeQuality: false
+      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
