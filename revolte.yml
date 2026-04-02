@@ -1,18 +1,10 @@
 revolte:
   version: '1.0'
-  project: Dracarys
-  appName: check-app
-  config:
-    codeQuality:
-      codeStyle:
-        rules:
-          invalidMetaclass: 'on'
+  project: test-project-1
+  appName: flask-test
   env:
     staging:
       branch: main
-      codeReview: true
-      codeQuality: true
-      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -21,6 +13,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
           specifications:
@@ -29,9 +22,6 @@ revolte:
             storage: 30
     qa:
       branch: main
-      codeReview: true
-      codeQuality: true
-      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -40,6 +30,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
           specifications:
@@ -48,9 +39,6 @@ revolte:
             storage: 30
     production:
       branch: main
-      codeReview: true
-      codeQuality: true
-      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -59,6 +47,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
           specifications:
@@ -69,10 +58,15 @@ revolte:
               replica:
                 min: 1
                 max: 1
+              utilization:
+                cpu:
+                  target: 70
+                memory:
+                  target: 70
+              behavior:
+                scaleDown:
+                  stabilizationWindow: 300
     preview:
-      codeReview: false
-      codeQuality: false
-      testSuite: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -81,6 +75,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
           specifications:
