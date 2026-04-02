@@ -12,7 +12,7 @@ revolte:
           entryPoint: app.py
           properties:
             health: /health
-            port: 8080
+            port: 8000
             loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
